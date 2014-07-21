@@ -55,7 +55,7 @@ end
   def search
     @text=params[:text]
     @title=params[:title]
-    if((@text.nil? and @title.nil? ) or (@text.to_s.blank? and @title.to_s.blank?))
+    if(params[:text].blank? and params[:title].blank?)
 
     else
       @articles=Article.where("title LIKE '%" +@title.to_s.strip+"%' and text LIKE '%"+@text.to_s.strip+"%'" );
