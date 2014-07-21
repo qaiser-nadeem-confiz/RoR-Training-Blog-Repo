@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
+
   	@articles = Article.all
 	end
  
@@ -52,6 +53,21 @@ end
     redirect_to articles_path
   end
 
+  def saveFile
+    uploaded_io = params[:file]
+    dir = File.dirname("#{Rails.root}/public/uploads/temp")
+    FileUtils.mkdir_p(dir)
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+      flash[:msg]="File Uploaded Succesffuly"
+      @articles = Article.all
+      render 'index'
+    end
+  end
+  def upload
+
+
+  end
   def search
     @text=params[:text]
     @title=params[:title]
@@ -59,6 +75,9 @@ end
 
     else
       @articles=Article.where("title LIKE '%" +@title.to_s.strip+"%' and text LIKE '%"+@text.to_s.strip+"%'" );
+
+
+
       render 'index'
     end
 

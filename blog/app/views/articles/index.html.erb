@@ -1,14 +1,17 @@
 <h1>Listing articles</h1>
+<div/>
+<h3  style="color: green">
+<%= label_tag(flash[:msg])  %>
+</h3>
+<div/>
  <%= link_to 'New Article' , new_article_path %>
  <%= link_to 'Search' , search_articles_path %>
+<%=link_to "Test File Upload" ,action: :upload%>
 <table>
   <tr>
     <th>Title</th>
     <th>Text</th>
   </tr>
-
-
-
 
   <% @articles.each do |article| %>
     <tr>

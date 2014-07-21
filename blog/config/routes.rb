@@ -14,6 +14,10 @@ Blog::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   resources :articles do
+    collection do
+    get '/upload' =>"articles#upload"
+    post '/upload' =>"articles#saveFile"
+    end
     resources :comments
     collection do
       get '/search'
