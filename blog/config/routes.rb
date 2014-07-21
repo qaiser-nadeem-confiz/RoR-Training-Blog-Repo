@@ -15,8 +15,10 @@ Blog::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   resources :articles do
     resources :comments
+    collection do
+      get '/search'
+    end
   end
-
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -34,7 +36,7 @@ Blog::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-
+  get '/articles/view/:title' => 'articles#showTitle'
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments
