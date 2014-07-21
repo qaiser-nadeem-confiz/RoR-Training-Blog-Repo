@@ -77,6 +77,8 @@ end
       @articles=Article.where("title LIKE '%" +@title.to_s.strip+"%' and text LIKE '%"+@text.to_s.strip+"%'" );
 
 
+        flash[:msg]="#{@articles.length} Article Found"
+
 
       render 'index'
     end

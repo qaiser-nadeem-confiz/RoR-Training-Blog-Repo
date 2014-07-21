@@ -1,12 +1,14 @@
 <h1>Listing articles</h1>
 <div/>
-<h3  style="color: green">
-<%= label_tag(flash[:msg])  %>
+<h3>
+<%= label_tag("",flash[:msg],:style=>"color:green")%>
 </h3>
 <div/>
  <%= link_to 'New Article' , new_article_path %>
  <%= link_to 'Search' , search_articles_path %>
 <%=link_to "Test File Upload" ,action: :upload%>
+
+<% if(@articles.length >0)  %>
 <table>
   <tr>
     <th>Title</th>
@@ -24,8 +26,4 @@
   <% end %>
 </table>
 
-
-<% if(@articles.length <=0)  %>
-   <div> No Article Found!!!</div>
-    <%= link_to "Home" ,articles_path%>
 <% end%>
